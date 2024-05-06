@@ -26,7 +26,7 @@ module.exports.registerPost = async (req,res) =>{
         res.redirect("back");
         return;
     }
-
+    console.log(req.body.password);
     const infoUser = {
         fullName: req.body.fullName,
         email: req.body.email,

@@ -1,18 +1,34 @@
+const passwordValidator = require('password-validator');
+const schema = new passwordValidator()
+
+schema
+.is().min(8)                                   
+.is().max(100)                                 
+.has().uppercase()                             
+.has().lowercase()                             
+.has().digits(2)                                
+.has().not().spaces()
+
+
+
+
 module.exports.registerPost = (req, res ,next) => {
     if(!req.body.fullName) {
         req.flash("error","Họ tên không được để trống!");
         res.redirect("back");
-        return;
+
     }
 
     if(!req.body.email){
         req.flash("error","Email không được để trống!");
         res.redirect("back");
-        return;
+   
     }
 
-    if(!req.body.password){
-        req.flash("error", "Mật khẩu không được để trống!");
+    if(!schema.validate(req.body.password)){
+        const inValid = schema.validate(req.body.password ,{ details: true });
+        const errorMessage = inValid[0];
+        req.flash("error", errorMessage.message);
         res.redirect("back");
         return;
     }
@@ -20,6 +36,7 @@ module.exports.registerPost = (req, res ,next) => {
     next();
 };
 
+//validate login user account
 module.exports.loginPost = (req, res, next) => {
     if(!req.body.email){
         req.flash("error", "Email không được để trống")
@@ -36,6 +53,7 @@ module.exports.loginPost = (req, res, next) => {
     next();
 };
 
+// validate user account forgot password
 module.exports.forgotPasswordPost = (req, res, next) => {
     if(!req.body.email){
         req.flash("error", "Email không được để trống!")
@@ -45,6 +63,8 @@ module.exports.forgotPasswordPost = (req, res, next) => {
     next();
 }
 
+
+//validate user account reset password
 module.exports.resetPassowrdPost = (req, res, next) => {
     if(!req.body.password){
         req.flash("error","Mật khẩu không được để trống!")
