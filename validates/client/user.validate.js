@@ -1,17 +1,8 @@
-const passwordValidator = require('password-validator');
-const schema = new passwordValidator()
-
-schema
-.is().min(8)                                   
-.is().max(100)                                 
-.has().uppercase()                             
-.has().lowercase()                             
-.has().digits(2)                                
-.has().not().spaces()
+const schema = require("../../helpers/validation-schema.helper");
 
 
 
-
+//validate register
 module.exports.registerPost = (req, res ,next) => {
     if(!req.body.fullName) {
         req.flash("error","Họ tên không được để trống!");
