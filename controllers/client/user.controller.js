@@ -26,7 +26,7 @@ module.exports.registerPost = async (req,res) =>{
         res.redirect("back");
         return;
     }
-    console.log(req.body.password);
+
     const infoUser = {
         fullName: req.body.fullName,
         email: req.body.email,
@@ -82,6 +82,7 @@ module.exports.loginPost = async (req,res) => {
         user_id: user.id
     });
 
+    req.flash("Success","Đăng nhập thành công!")
     res.redirect("/")
 }
 
