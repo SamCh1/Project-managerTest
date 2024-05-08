@@ -7,6 +7,8 @@ const Product = require("../../models/product.model")
 const generate = require("../../helpers/generate.helper")
 const sendMailHelper = require("../../helpers/send-mail.helper")
 
+const emailValidator = require("email-validator"); 
+
 //[GET] /user/register
 module.exports.register = (req,res) => {
     res.render("client/pages/user/register", {
@@ -50,6 +52,12 @@ module.exports.login = (req,res) => {
 module.exports.loginPost = async (req,res) => { 
     const email = req.body.email;
     const password = md5(req.body.password);
+
+    // if(!emailValidator.validate(email)){
+    //     req.flash("error","Tài khoản định dạng không đúng kiểu Email ");
+    //     res.redirect("back");
+    //     return;
+    // }
 
     const user = await User.findOne({
         email: email,
