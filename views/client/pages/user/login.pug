@@ -19,7 +19,7 @@ block main
               class="form-control"
               id="email"
               name="email"
-              oninvalid="this.setCustomValidity('Đây là tính năng, xin hãy nhập đúng email và có ký tự @')"
+              required
             )
           div(class="form-group")
             label(for="password") Mật khẩu
@@ -36,3 +36,5 @@ block main
             ) Đăng nhập
 
         a(href="/user/password/forgot") Quên mật khẩu?
+
+        //  oninvalid="this.setCustomValidity('Đây là tính năng, xin hãy nhập đúng email và có ký tự @')"
