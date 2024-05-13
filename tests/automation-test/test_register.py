@@ -28,7 +28,7 @@ class TestRegisterFunction(unittest.TestCase):
 
     # Happy Cases
     # TC_08
-    def test1_login_with_valid_credentials(self):
+    def test8_register_with_valid_credentials(self):
         with open("Data/register_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
             name = data["test_cases_login"][0]["name"]
@@ -47,6 +47,17 @@ class TestRegisterFunction(unittest.TestCase):
 
     # Negative Cases
     # TC_09
+    def test9_regisrt_with_invalid_credentials(self):
+        with open("Data/register_function_data.json", encoding="utf-8") as f:
+            data = json.load(f)
+            name = data["test_cases_login"][1]["name"]
+            username = data["test_cases_login"][1]["username"]
+            password = data["test_cases_login"][1]["password"]
+            self.login(name, username, password)
+            error_message = self.driver.find_element(
+                By.ID, 'email').get_attribute("validationMessage")
+            self.assertEqual(
+                error_message, "Please include an '@' in the email address. ")
     # TC_10
 
 
