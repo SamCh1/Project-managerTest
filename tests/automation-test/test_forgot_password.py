@@ -33,7 +33,7 @@ class TestForgotPasswordFunction(unittest.TestCase):
 
     # Happy Cases
     # TC_16
-    def test16_login_with_valid_credentials(self):
+    def test16(self):
         with open("Data/forgot_password_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
             email = data["test_cases_Forgot_Password"][0]["email"]
@@ -47,7 +47,7 @@ class TestForgotPasswordFunction(unittest.TestCase):
             otp = otpmatch.group(0)
             # print(a)
             # print(otp)
-            time.sleep(5)
+            time.sleep(6)
             # Điền OTP và đổi mật khẩu
             self.driver.find_element(By.ID, "otp").send_keys(otp)
             self.driver.find_element(
@@ -66,6 +66,46 @@ class TestForgotPasswordFunction(unittest.TestCase):
             # self.driver.save_screenshot('123lmss.png')
             print(success_message)
             self.assertEqual(success_message, "Đổi mật khẩu thành công! x")
+
+    # Negative Cases
+    # TC_17
+    def test17(self):
+        with open("Data/forgot_password_function_data.json", encoding="utf-8") as f:
+            data = json.load(f)
+            email = data["test_cases_Forgot_Password"][1]["email"]
+            self.login(email)
+            error_message = self.driver.find_element(
+                By.ID, 'email').get_attribute("validationMessage")
+            print(error_message)
+            self.assertEqual(
+                error_message, "Please include an '@' in the email address. '"+email+"' is missing an '@'.")
+
+    # TC_18
+    def test18(self):
+        with open("Data/forgot_password_function_data.json", encoding="utf-8") as f:
+            data = json.load(f)
+            email = data["test_cases_Forgot_Password"][2]["email"]
+            self.login(email)
+            error_message = self.driver.find_element(
+                By.ID, 'email').get_attribute("validationMessage")
+            print(error_message)
+            self.assertEqual(
+                error_message, "Please fill out this field.")
+
+    # TC_19
+    def test19(self):
+        with open("Data/forgot_password_function_data.json", encoding="utf-8") as f:
+            data = json.load(f)
+            email = data["test_cases_Forgot_Password"][3]["email"]
+            self.login(email)
+            error_message_element = WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located(
+                    (By.CLASS_NAME, "alert-danger"))
+            )
+            error_message = error_message_element.text.strip()
+            # self.driver.save_screenshot('123lmss.png')
+            print(error_message)
+            self.assertEqual(error_message, "Email không tồn tại! x")
 
 
 if __name__ == "__main__":
