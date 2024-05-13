@@ -58,11 +58,11 @@ block main
 
             if(order.products.length > 0)
               h3(class="text-right") Tổng đơn hàng: #{order.totalPrice}$
-            form(
-              action=`/${prefixAdmin}/order/detail/${order.id}?_method=PATCH`
-              method="POST"
-            )
             if(role.permissions.includes("orders_edit"))
+              form(
+                action=`/${prefixAdmin}/order/detail/${order.id}?_method=PATCH`
+                method="POST"
+              )
                 if(order.status === "active")      
                   div(class="form-group mb-2" )
                     button(
