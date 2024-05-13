@@ -1,0 +1,52 @@
+{
+  "test_cases_Register": [
+    {
+      "ID": "TC_08",
+      "name": "Nguyễn Trương Xuân Nghiêm",
+      "username": "nghiemnguyen111121@gmail.com",
+      "password": "11112001Nghiem"
+    },
+    {
+      "ID": "TC_09",
+      "name": "Nguyễn Trương Xuân @",
+      "username": "123xyz",
+      "password": "a"
+    },
+    {
+      "ID": "TC_010",
+      "name": "",
+      "username": "2151010246nghiem@ou.edu.vn",
+      "password": "11112001Nghiem"
+    },
+    {
+      "ID": "TC_11",
+      "name": "Nguyễn Trương Xuân @",
+      "username": "2151010246nghiem@ou.edu.vn",
+      "password": "11112001Nghiem"
+    },
+    {
+      "ID": "TC_12",
+      "name": "Nguyễn Trương Xuân Nghiêm",
+      "username": "",
+      "password": "11112001Nghiem"
+    },
+    {
+      "ID": "TC_13",
+      "name": "Nguyễn Trương Xuân Nghiêm",
+      "username": "123xyz",
+      "password": "11112001Nghiem"
+    },
+    {
+      "ID": "TC_14",
+      "name": "Nguyễn Trương Xuân Nghiêm",
+      "username": "2151010246nghiem@ou.edu.vn",
+      "password": ""
+    },
+    {
+      "ID": "TC_15",
+      "name": "Nguyễn Trương Xuân Nghiêm",
+      "username": "2151010246nghiem@ou.edu.vn",
+      "password": "a"
+    }
+  ]
+}
