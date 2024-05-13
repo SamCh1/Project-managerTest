@@ -196,6 +196,7 @@ module.exports.resetPasswordPost = async (req,res) =>{
         }, {
             password: md5(password),
         });
+        req.flash("Success","Đổi mật khẩu thành công!")
         res.redirect("/")
     } catch (error) {
         console.log(error);
