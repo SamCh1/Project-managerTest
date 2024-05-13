@@ -45,6 +45,10 @@ class TestRegisterFunction(unittest.TestCase):
             print(success_message)
             self.assertEqual(success_message, "Đăng nhập thành công! x")
 
+    # Negative Cases
+    # TC_09
+    # TC_10
+
 
 if __name__ == "__main__":
     unittest.main()
