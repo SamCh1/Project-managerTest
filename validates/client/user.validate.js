@@ -8,6 +8,13 @@ module.exports.registerPost = (req, res ,next) => {
         return;
     }
 
+    const regex = /[0123456789!@#$%^&*()\[\]_+{}\|;:'"?.>,<\/-]/;
+    if(regex.test(req.body.fullName)){
+        req.flash("error","Họ tên không hợp lệ");
+        res.redirect("back");
+        return;
+    }
+
     if(!req.body.email){
         req.flash("error","Email không được để trống!");
         res.redirect("back");
