@@ -26,12 +26,17 @@
       "password": "abcxyz"
     },
     {
-      "name": "TC_06",
+       "name": "TC_06",
+       "username": "abcXYZ",
+       "password": "11112001Nghiem"
+    },
+    {
+      "name": "TC_07",
       "username": "23Sam@gmailxyz.com",
       "password": "11112001Nghiem"
     },
     {
-      "name": "TC_07",
+      "name": "TC_08",
       "username": "23Sam@gmailxyz.com",
       "password": "abcxyz"
     }

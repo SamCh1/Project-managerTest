@@ -11,7 +11,7 @@ import json
 class TestLoginFunction(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.driver.get('http://localhost:3000')
+        self.driver.get('https://storecs.vercel.app/')
 
     def tearDown(self):
         self.driver.quit()
@@ -26,7 +26,7 @@ class TestLoginFunction(unittest.TestCase):
 
     # Happy Cases
     # TC_01
-    def test1_login_with_valid_credentials(self):
+    def test1(self):
         with open("Data/login_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
             username = data["test_cases_login"][0]["username"]
@@ -43,13 +43,13 @@ class TestLoginFunction(unittest.TestCase):
                     (By.CLASS_NAME, "alert-success"))
             )
             success_message = success_message_element.text.strip()
-            self.driver.save_screenshot('123lmss.png')
+            self.driver.save_screenshot('image/pass/1.jpg')
             print(success_message)
             self.assertEqual(success_message, "Đăng nhập thành công! x")
 
     # Negative Cases
     # TC_02
-    def test2_login_with_blank_username_and_password(self):
+    def test2(self):
         with open("Data/login_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
             username = data["test_cases_login"][1]["username"]
@@ -58,12 +58,12 @@ class TestLoginFunction(unittest.TestCase):
             # time.sleep(3)
             error_message = self.driver.find_element(
                 By.ID, 'email').get_attribute("validationMessage")
-            # self.driver.switch_to.frame(error_message)
-            # print(error_message)
+            print(error_message)
+            self.driver.save_screenshot('image/pass/2.jpg')
             self.assertEqual(error_message, "Please fill out this field.")
 
     # TC_03
-    def test3_login_with_empty_username_and_valid_password(self):
+    def test3(self):
         with open("Data/login_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
             username = data["test_cases_login"][2]["username"]
@@ -71,10 +71,12 @@ class TestLoginFunction(unittest.TestCase):
             self.login(username, password)
             error_message = self.driver.find_element(
                 By.ID, 'email').get_attribute("validationMessage")
+            self.driver.save_screenshot('image/pass/3.jpg')
+            print(error_message)
             self.assertEqual(error_message, "Please fill out this field.")
 
     # TC_04
-    def test4_login_with_valid_username_and_empty_password(self):
+    def test4(self):
         with open("Data/login_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
             username = data["test_cases_login"][3]["username"]
@@ -86,12 +88,12 @@ class TestLoginFunction(unittest.TestCase):
                     (By.CLASS_NAME, "alert-danger"))
             )
             error_message = error_message_element.text.strip()
-            # self.driver.save_screenshot('123lmss.png')
+            self.driver.save_screenshot('image/pass/4.jpg')
             print(error_message)
             self.assertEqual(error_message, "Mật khẩu không được để trống x")
 
     # TC_05
-    def test5_login_with_valid_username_and_invalid_password(self):
+    def test5(self):
         with open("Data/login_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
             username = data["test_cases_login"][4]["username"]
@@ -102,29 +104,26 @@ class TestLoginFunction(unittest.TestCase):
                     (By.CLASS_NAME, "alert-danger"))
             )
             error_message = error_message_element.text.strip()
-            # self.driver.save_screenshot('123lmss.png')
+            self.driver.save_screenshot('image/pass/5.jpg')
             print(error_message)
             self.assertEqual(error_message, "Sai mật khẩu! x")
 
     # TC_06
-    def test6_login_with_invalid_username_and_valid_password(self):
+    def test6(self):
         with open("Data/login_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
             username = data["test_cases_login"][5]["username"]
             password = data["test_cases_login"][5]["password"]
             self.login(username, password)
-            error_message_element = WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located(
-                    (By.CLASS_NAME, "alert-danger"))
-            )
-            error_message = error_message_element.text.strip()
-            # self.driver.save_screenshot('123lmss.png')
+            error_message = self.driver.find_element(
+                By.ID, 'email').get_attribute("validationMessage")
+            self.driver.save_screenshot('image/pass/6.jpg')
             print(error_message)
-            self.assertEqual(error_message, "Email không tồn tại! x")
+            self.assertEqual(
+                error_message, "Please include an '@' in the email address. '"+username+"' is missing an '@'.")
 
     # TC_07
-
-    def test7_login_with_invalid_username_and_invalid_password(self):
+    def test7(self):
         with open("Data/login_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
             username = data["test_cases_login"][6]["username"]
@@ -135,7 +134,23 @@ class TestLoginFunction(unittest.TestCase):
                     (By.CLASS_NAME, "alert-danger"))
             )
             error_message = error_message_element.text.strip()
-            # self.driver.save_screenshot('123lmss.png')
+            self.driver.save_screenshot('image/pass/7.jpg')
+            print(error_message)
+            self.assertEqual(error_message, "Email không tồn tại! x")
+
+    # TC_08
+    def test8(self):
+        with open("Data/login_function_data.json", encoding="utf-8") as f:
+            data = json.load(f)
+            username = data["test_cases_login"][7]["username"]
+            password = data["test_cases_login"][7]["password"]
+            self.login(username, password)
+            error_message_element = WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located(
+                    (By.CLASS_NAME, "alert-danger"))
+            )
+            error_message = error_message_element.text.strip()
+            self.driver.save_screenshot('image/pass/8.jpg')
             print(error_message)
             self.assertEqual(error_message, "Email không tồn tại! x")
 
