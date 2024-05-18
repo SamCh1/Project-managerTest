@@ -1,7 +1,7 @@
-const controller = require("../../controllers/admin/product.controllers")
+const controller = require("../../../controllers/admin/product.controllers.js")
 
-jest.mock("../../models/product.model.js")
-const Product = require("../../models/product.model.js");
+jest.mock("../../../models/product.model.js")
+const Product = require("../../../models/product.model.js");
 
 
 describe('changeStatus function', () => {

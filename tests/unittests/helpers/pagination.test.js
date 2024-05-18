@@ -1,4 +1,4 @@
-const pagination = require("../../helpers/pagination.helper")
+const pagination = require("../../../helpers/pagination.helper")
 
 describe('pagination function', () => {
     test('pagination with default values', () => {

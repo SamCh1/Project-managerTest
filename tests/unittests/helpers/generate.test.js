@@ -1,4 +1,4 @@
-const generateRandom = require('../../helpers/generate.helper') 
+const generateRandom = require('../../../helpers/generate.helper') 
 
 describe('generateRandomNumber', () => {
     it('should generate a random number string of the specified length', () => {
