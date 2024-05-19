@@ -28,15 +28,15 @@ class TestRegisterFunction(unittest.TestCase):
             By.CSS_SELECTOR, "body > div > div > div > form > div:nth-child(3) > button").click()
 
     # Happy Cases
-    # TC_71
-    def test71(self):
-        with open("Data/add_new_group_of_product_function_data.json", encoding="utf-8") as f:
+    # TC_83
+    def test83(self):
+        with open("Data/edit_group_of_product_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
-            username = data["test_cases_add_new_group_of_product"][0]["username"]
-            password = data["test_cases_add_new_group_of_product"][0]["password"]
-            title = data["test_cases_add_new_group_of_product"][0]["title"]
-            description = data["test_cases_add_new_group_of_product"][0]["description"]
-            location = data["test_cases_add_new_group_of_product"][0]["location"]
+            username = data["test_cases_edit_group_of_product"][5]["username"]
+            password = data["test_cases_edit_group_of_product"][5]["password"]
+            title = data["test_cases_edit_group_of_product"][5]["title"]
+            description = data["test_cases_edit_group_of_product"][5]["description"]
+            location = data["test_cases_edit_group_of_product"][5]["location"]
             self.login(username, password)
 
             success_message = self.driver.find_element(
@@ -93,15 +93,53 @@ class TestRegisterFunction(unittest.TestCase):
                 By.XPATH, '/html/body/div[1]/div[2]/form/div[8]/button').click()
             time.sleep(5)
 
-            # Kiểm tra xem danh mục mới có xuất hiện bên màn hình user hay ko
-            self.driver.get('https://storecs.vercel.app/')
-            main_menu_item = self.driver.find_element(
-                By.CSS_SELECTOR, "body > header > div > div > div.col-4 > div > ul > li.sub-menu > a")
-            actions = ActionChains(self.driver)
-            actions.move_to_element(main_menu_item).perform()
-            self.driver.implicitly_wait(10)
+            # Chọn vào sửa
+            self.driver.find_element(
+                By.XPATH, "/html/body/div/div[2]/div/table/tbody/tr[3]/td[6]/a").click()
+            time.sleep(3)
+
+            # Sửa tiêu đề
+            self.driver.find_element(
+                By.ID, "title").clear()  # Xóa tiêu đề cũ
+            self.driver.find_element(
+                By.ID, "title").send_keys("Danh mục Apple")
+            # Sửa vị trí
+            self.driver.find_element(
+                By.CSS_SELECTOR, "#position").clear()  # Xóa vị trí cũ
+            self.driver.find_element(
+                By.CSS_SELECTOR, "#position").send_keys("4")
+            # Điền mô tả vào thẻ iframe (Sửa nội dung)
+            self.driver.switch_to.frame("desc_ifr")
+            body = self.driver.find_element(By.ID, "tinymce")
+            body.clear()  # Clear any existing content
+            body.send_keys("Đây là nội dung sửa")
+            self.driver.switch_to.default_content()
+            time.sleep(3)
+
+            # Upload ảnh mới
+            file_input = self.driver.find_element(By.ID, 'thumbnail')
+            file_path = "D:/Project-managerTest/tests/automation-test/image_for_testing/cat.jpg"
+            file_input.send_keys(file_path)
+            time.sleep(3)
+
+            # Sửa trạng thái
+            self.driver.find_element(
+                By.XPATH, '//*[@id="statusActive"]').click()
+
+            # Chọn button cập nhật
+            self.driver.find_element(
+                By.XPATH, '/html/body/div[1]/div[2]/form/div[8]/button').click()
             time.sleep(5)
-            # So sánh kết quả với database (thêm sau)
+
+            # Vào lại danh mục sản phẩm chọn xem đã sửa chưa
+            self.driver.find_element(
+                By.XPATH, '/html/body/div[1]/div[1]/div/ul/li[2]/a').click()
+            self.driver.save_screenshot('image/fail/TC_89.jpg')
+            time.sleep(4)
+            # Chọn vào sửa lại để xem
+            # self.driver.find_element(
+            #     By.XPATH, "/html/body/div/div[2]/div/table/tbody/tr[3]/td[6]/a").click()
+            # time.sleep(3)
 
 
 if __name__ == "__main__":

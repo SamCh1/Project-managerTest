@@ -17,7 +17,7 @@ from selenium import webdriver
 class TestForgotPasswordFunction(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.driver.get('http://localhost:3000')
+        self.driver.get('https://storecs.vercel.app/')
 
     def tearDown(self):
         self.driver.quit()
@@ -426,13 +426,13 @@ class TestForgotPasswordFunction(unittest.TestCase):
 
             error_message_element = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located(
-                    (By.CLASS_NAME, "alert-danger"))
+                    (By.CLASS_NAME, "alert-success"))
             )
             error_message = error_message_element.text.strip()
-            # self.driver.save_screenshot('image/pass/4.jpg')
+            self.driver.save_screenshot('image/fail/TC_35.jpg')
             print(error_message)
             self.assertEqual(
-                error_message, "password: Phải có ít nhất 2 chữ số x")
+                error_message, "password: Độ dài mật khẩu không quá 100 ký tự x")
 
 
 if __name__ == "__main__":

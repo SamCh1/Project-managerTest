@@ -113,9 +113,9 @@ class TestRegisterFunction(unittest.TestCase):
     #                     f'Navigated to link for {order_username}: {view_link}')
 
     #                 break
-    # So sánh thông tin đơn hàng với nội dung khách đã nhập trc đó (Thêm sau)
+    # # So sánh thông tin đơn hàng với nội dung khách đã nhập trc đó (Thêm sau)
 
-    # TC_51
+    # # TC_51
     # def test51(self):
     #     with open("Data/order_function_data.json", encoding="utf-8") as f:
     #         data = json.load(f)
@@ -222,8 +222,8 @@ class TestRegisterFunction(unittest.TestCase):
 
     #                 break
 
-    # Negative Case
-    # TC_52
+    # # Negative Case
+    # # TC_52
     # def test52(self):
     #     with open("Data/order_function_data.json", encoding="utf-8") as f:
     #         data = json.load(f)
@@ -284,7 +284,7 @@ class TestRegisterFunction(unittest.TestCase):
     #         print(error_message)
     #         self.assertEqual(error_message, "Please fill out this field.")
 
-    # TC_53
+    # # TC_53
     # def test53(self):
     #     with open("Data/order_function_data.json", encoding="utf-8") as f:
     #         data = json.load(f)
@@ -402,10 +402,10 @@ class TestRegisterFunction(unittest.TestCase):
 
     #         error_message_element = WebDriverWait(self.driver, 10).until(
     #             EC.visibility_of_element_located(
-    #                 (By.CLASS_NAME, "alert-danger"))
+    #                 (By.CLASS_NAME, "alert-success"))
     #         )
     #         error_message = error_message_element.text.strip()
-    #         # self.driver.save_screenshot('image/pass/4.jpg')
+    #         self.driver.save_screenshot('image/fail/54.jpg')
     #         print(error_message)
     #         self.assertEqual(error_message, "Họ tên không hợp lệ x")
 
@@ -466,11 +466,11 @@ class TestRegisterFunction(unittest.TestCase):
 
     #         error_message = self.driver.find_element(
     #             By.ID, 'phone').get_attribute("validationMessage")
-    #         #self.driver.save_screenshot('image/pass/3.jpg')
+    #         # self.driver.save_screenshot('image/pass/3.jpg')
     #         print(error_message)
     #         self.assertEqual(error_message, "Please fill out this field.")
 
-    # TC_56
+    # # TC_56
     # def test56(self):
     #     with open("Data/order_function_data.json", encoding="utf-8") as f:
     #         data = json.load(f)
@@ -530,11 +530,11 @@ class TestRegisterFunction(unittest.TestCase):
     #                 (By.CLASS_NAME, "alert-danger"))
     #         )
     #         error_message = error_message_element.text.strip()
-    #         #self.driver.save_screenshot('image/pass/4.jpg')
+    #         # self.driver.save_screenshot('image/pass/4.jpg')
     #         print(error_message)
     #         self.assertEqual(error_message, "Số điện thoại không hợp lệ x")
 
-    # TC_57
+    # # TC_57
     # def test57(self):
     #     with open("Data/order_function_data.json", encoding="utf-8") as f:
     #         data = json.load(f)
@@ -591,10 +591,10 @@ class TestRegisterFunction(unittest.TestCase):
 
     #         error_message_element = WebDriverWait(self.driver, 10).until(
     #             EC.visibility_of_element_located(
-    #                 (By.CLASS_NAME, "alert-danger"))
+    #                 (By.CLASS_NAME, "alert-success"))
     #         )
     #         error_message = error_message_element.text.strip()
-    #         #self.driver.save_screenshot('image/pass/4.jpg')
+    #         self.driver.save_screenshot('image/fail/TC_57.jpg')
     #         print(error_message)
     #         self.assertEqual(error_message, "Số điện thoại không hợp lệ x")
 
@@ -655,14 +655,14 @@ class TestRegisterFunction(unittest.TestCase):
 
     #         error_message_element = WebDriverWait(self.driver, 10).until(
     #             EC.visibility_of_element_located(
-    #                 (By.CLASS_NAME, "alert-danger"))
+    #                 (By.CLASS_NAME, "alert-success"))
     #         )
     #         error_message = error_message_element.text.strip()
-    #         # self.driver.save_screenshot('image/pass/4.jpg')
+    #         self.driver.save_screenshot('image/fail/TC_58.jpg')
     #         print(error_message)
     #         self.assertEqual(error_message, "Số điện thoại không hợp lệ x")
 
-    # TC_59
+    # # TC_59
     # def test59(self):
     #     with open("Data/order_function_data.json", encoding="utf-8") as f:
     #         data = json.load(f)
@@ -723,7 +723,7 @@ class TestRegisterFunction(unittest.TestCase):
     #         print(error_message)
     #         self.assertEqual(error_message, "Please fill out this field.")
 
-    # TC_60
+    # # TC_60
     # def test60(self):
     #     with open("Data/order_function_data.json", encoding="utf-8") as f:
     #         data = json.load(f)
@@ -780,14 +780,14 @@ class TestRegisterFunction(unittest.TestCase):
 
     #         error_message_element = WebDriverWait(self.driver, 10).until(
     #             EC.visibility_of_element_located(
-    #                 (By.CLASS_NAME, "alert-danger"))
+    #                 (By.CLASS_NAME, "alert-success"))
     #         )
     #         error_message = error_message_element.text.strip()
-    #         #self.driver.save_screenshot('image/pass/4.jpg')
+    #         self.driver.save_screenshot('image/fail/TC_60.jpg')
     #         print(error_message)
     #         self.assertEqual(error_message, "Địa chỉ không hợp lệ x")
 
-    # TC_61
+    # # TC_61
     def test61(self):
         with open("Data/order_function_data.json", encoding="utf-8") as f:
             data = json.load(f)
@@ -844,10 +844,10 @@ class TestRegisterFunction(unittest.TestCase):
 
             error_message_element = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located(
-                    (By.CLASS_NAME, "alert-danger"))
+                    (By.CLASS_NAME, "alert-success"))
             )
             error_message = error_message_element.text.strip()
-            # self.driver.save_screenshot('image/pass/4.jpg')
+            self.driver.save_screenshot('image/fail/TC_61.jpg')
             print(error_message)
             self.assertEqual(error_message, "Địa chỉ không hợp lệ x")
 
