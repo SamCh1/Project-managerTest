@@ -15,7 +15,7 @@ module.exports.index = async (req,res) => {
         for(const item of cart.products){
             const product = await Product.findOne({
                 _id: item.product_id
-            }).select("thumbnail title slug price discountPercentage")
+            }).select("thumbnail title slug price discountPercentage stock")
             product.priceNew = (product.price * (100 - product.discountPercentage)/100).toFixed(0);
             item.productInfo = product;
             item.totalPrice = item.quantity * product.priceNew;

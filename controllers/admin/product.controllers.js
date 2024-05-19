@@ -221,6 +221,7 @@ module.exports.edit = async (req, res) => {
 module.exports.editPatch = async (req, res) => {
     try {
         const id = req.params.id;
+        console.log(req.body);
         req.body.price = parseInt(req.body.price);
         req.body.discountPercentage = parseInt(req.body.discountPercentage);
         req.body.stock = parseInt(req.body.stock);
@@ -237,6 +238,7 @@ module.exports.editPatch = async (req, res) => {
         req.flash("Success","Cập nhật sản phẩm thành công");
         res.redirect("back");    
     } catch (error) {
+        req.flash("error","Cập nhật thất bại");
         res.redirect(`/${systemCongif.prefixAdmin}/products`);
     }
 }

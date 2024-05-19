@@ -106,3 +106,11 @@ module.exports.edit = async (req,res) => {
         order: order
     })
 }
+
+//[PATCH] /admin/order/edit/id
+module.exports.editPatch = async (req,res) => {
+    const id = req.params.orderId;
+    console.log(req.body.fullName);
+    console.log(req.body.phone);
+    console.log(id);
+}

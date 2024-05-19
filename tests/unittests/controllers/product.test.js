@@ -59,4 +59,8 @@ describe('deleteItem function', () => {
         // Verify that res.redirect was called to redirect back
         expect(res.redirect).toHaveBeenCalledWith('back');
     });
+
+    test('should update new create', async() => {
+      
+    })
 });
