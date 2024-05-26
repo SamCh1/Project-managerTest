@@ -1,4 +1,4 @@
-const createTree = require('../../helpers/create-tree.helper');
+const createTree = require('../../../helpers/create-tree.helper');
 
 describe('createTree function', () => {
   it('should create a tree structure from array of objects', () => {

@@ -19,6 +19,10 @@ module.exports.index = async (req,res) => {
         }).sort({ position: "desc" });
     }
 
+    for (const item of product){
+        item.priceNew = (item.price * (100 - item.discountPercentage)/100).toFixed(0);
+    }  
+
     res.render("client/pages/search/index", {
         pageTitle: "Kết quả tìm kiếm",
         keyword: keyword,

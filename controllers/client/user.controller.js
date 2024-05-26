@@ -39,7 +39,7 @@ module.exports.registerPost = async (req,res) =>{
     const user = new User(infoUser);
     await user.save();
 
-    req.flash("Success","Đăng ký thành công");
+    req.flash("Success","Đăng ký thành công!");
     res.cookie("tokenUser", user.tokenUser);
     res.redirect("/");
 }
