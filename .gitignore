@@ -20,3 +20,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+tests/automation-test/credentials.json
+tests/automation-test/token.json
